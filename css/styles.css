@@ -1,31 +1,449 @@
-body{
-    font-family:Arial, Helvetica;
-    background:#f4f6f9;
-    color:#333;
+/* ========================================= */
+/* VARIABLES */
+/* ========================================= */
+
+/* Las variables CSS permiten reutilizar colores, sombras y medidas en todo el proyecto para mantener una identidad visual consistente. */
+:root{
+    --primary:#F18A4B; /* Color principal utilizado para botones y elementos destacados. */
+    --primary-dark:#E15D44; /* Variante más intensa del color principal para efectos interactivos. */
+    --secondary:#5A6F48; /* Color secundario inspirado en el bambú para elementos complementarios. */
+    --secondary-light:#8BA26E; /* Variante clara utilizada en detalles y estados secundarios. */
+    --dark:#2E3B2E; /* Color principal para textos y fondos oscuros. */
+    --background:#FFF9F1; /* Color base utilizado como fondo general del sitio. */
+    --surface:#FFFFFF; /* Color utilizado para tarjetas y formularios. */
+    --text:#2E3B2E; /* Color principal del contenido textual. */
+    --muted:#6B7280; /* Color utilizado para textos secundarios. */
+    --shadow:0px 10px 25px rgba(0,0,0,.10); /* Sombra suave utilizada para generar profundidad. */
+    --radius:18px; /* Radio estándar utilizado para redondear esquinas. */
 }
+
+/* ========================================= */
+/* RESET BÁSICO */
+/* ========================================= */
+
+/* El selector universal elimina los estilos predeterminados del navegador para lograr un diseño consistente. */
+*{
+    margin:0; /* Elimina el margen externo de todos los elementos. */
+    padding:0; /* Elimina el espacio interno predeterminado. */
+    box-sizing:border-box; /* Incluye borde y relleno dentro del tamaño definido del elemento. */
+}
+
+/* ========================================= */
+/* ESTILOS GENERALES */
+/* ========================================= */
+
+body{
+    font-family:Arial,Helvetica,sans-serif; /* Define la tipografía principal del sitio. */
+    background:linear-gradient(to bottom,#FFF9F1,#F8F4EE); /* Aplica un degradado cálido inspirado en un atardecer. */
+    color:var(--text); /* Utiliza el color principal para el contenido textual. */
+}
+
+/* ========================================= */
+/* LOGIN */
+/* ========================================= */
 
 .container{
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    min-height:100vh;
-    padding:30px;
+    display:flex; /* Activa Flexbox para organizar los elementos internos. */
+    justify-content:center; /* Centra los elementos horizontalmente. */
+    align-items:center; /* Centra los elementos verticalmente. */
+    min-height:100vh; /* Hace que el contenedor ocupe toda la altura visible de la ventana. */
+    padding:60px; /* Agrega espacio interno alrededor del contenido. */
+    gap:60px; /* Separa los elementos hijos manteniendo una distancia uniforme. */
 }
 
+/* Imagen lateral */
+
 .login-image{
-    width:50%;
-    text-align:center;
+    width:55%; /* Asigna más espacio a la ilustración principal. */
+    text-align:center; /* Centra horizontalmente el contenido interno. */
 }
 
 .login-image img{
-    width:90%;
-    max-width:450px;
+    width:100%; /* Permite que la imagen ocupe todo el ancho del contenedor. */
+    max-width:650px; /* Limita el tamaño máximo para conservar la proporción. */
 }
 
+/* Formulario */
+
 .login-form{
-    width:400px;
-    background:white;
-    padding:40px;
-    border-radius:15px;
-    box-shadow:0px 5px 20px rgba(0,0,0,.15);
+    width:420px; /* Define un ancho fijo para mantener una lectura cómoda. */
+    background:rgba(255,255,255,.95); /* Aplica un fondo blanco con ligera transparencia. */
+    padding:45px; /* Agrega espacio interno alrededor del formulario. */
+    border-radius:24px; /* Redondea las esquinas para un aspecto moderno. */
+    box-shadow:var(--shadow); /* Genera profundidad mediante una sombra suave. */
+    backdrop-filter:blur(15px); /* Aplica un efecto de desenfoque al fondo cuando el navegador lo soporta. */
+}
+
+/* Logo */
+
+.logo{
+    width:180px; /* Define el tamaño del logotipo. */
+    display:block; /* Convierte el elemento en un bloque independiente. */
+    margin:auto; /* Centra el logotipo horizontalmente. */
+}
+
+/* Título */
+
+.login-form h1{
+    text-align:center; /* Centra el texto del encabezado. */
+    margin-top:20px; /* Agrega separación respecto al logotipo. */
+    font-size:34px; /* Incrementa el tamaño del título principal. */
+    color:var(--dark); /* Utiliza el color principal del proyecto. */
+}
+
+/* Subtítulo */
+
+.subtitle{
+    text-align:center; /* Centra el subtítulo. */
+    color:var(--muted); /* Utiliza un color discreto para reducir el protagonismo visual. */
+    margin-bottom:35px; /* Separa el subtítulo del formulario. */
+    font-size:15px; /* Define un tamaño de lectura cómodo. */
+}
+
+/* Grupo de controles */
+
+.form-group{
+    margin-bottom:22px; /* Separa cada grupo de controles del siguiente. */
+}
+
+/* Etiquetas */
+
+.form-group label{
+    display:block; /* Coloca la etiqueta en una línea independiente. */
+    margin-bottom:8px; /* Separa la etiqueta del campo correspondiente. */
+    font-weight:600; /* Resalta el texto de la etiqueta. */
+    color:var(--dark); /* Utiliza el color principal para facilitar la lectura. */
+}
+
+/* Inputs */
+
+.form-group input{
+    width:100%; /* Hace que el campo ocupe todo el ancho disponible. */
+    padding:15px; /* Incrementa el espacio interno para mejorar la experiencia de escritura. */
+    border:2px solid #E8E8E8; /* Dibuja un borde suave alrededor del campo. */
+    border-radius:14px; /* Redondea las esquinas del campo. */
+    font-size:15px; /* Define el tamaño del texto ingresado. */
+    transition:.30s; /* Suaviza los cambios de apariencia al interactuar con el campo. */
+}
+
+.form-group input:focus{
+    outline:none; /* Elimina el contorno predeterminado del navegador. */
+    border-color:var(--primary); /* Resalta el borde utilizando el color principal. */
+    box-shadow:0px 0px 0px 4px rgba(241,138,75,.20); /* Agrega un resplandor para indicar que el campo está activo. */
+}
+
+/* Checkbox */
+
+.remember{
+    margin-bottom:22px; /* Separa el checkbox del botón principal. */
+}
+
+/* Botón */
+
+.login-button{
+    display:block; /* Convierte el enlace en un bloque para ocupar todo el ancho. */
+    width:100%; /* Hace que el botón ocupe completamente el formulario. */
+    text-align:center; /* Centra el texto del botón. */
+    background:linear-gradient(90deg,#F18A4B,#E15D44); /* Aplica un degradado inspirado en el atardecer. */
+    color:white; /* Utiliza texto blanco para mejorar el contraste. */
+    padding:16px; /* Incrementa el área de interacción del botón. */
+    border-radius:14px; /* Redondea las esquinas del botón. */
+    text-decoration:none; /* Elimina el subrayado del enlace. */
+    font-weight:bold; /* Resalta el texto del botón. */
+    transition:.30s; /* Suaviza las animaciones al interactuar con el botón. */
+}
+
+.login-button:hover{
+    transform:translateY(-2px); /* Desplaza ligeramente el botón hacia arriba para generar sensación de elevación. */
+    box-shadow:0px 10px 20px rgba(241,138,75,.35); /* Agrega una sombra más intensa durante la interacción. */
+}
+
+/* Recuperar contraseña */
+
+.forgot-password{
+    display:block; /* Convierte el enlace en un elemento de bloque. */
+    margin-top:22px; /* Separa el enlace del botón principal. */
+    text-align:center; /* Centra el texto del enlace. */
+    text-decoration:none; /* Elimina el subrayado predeterminado. */
+    color:var(--secondary); /* Utiliza el color secundario para diferenciar el enlace. */
+    transition:.30s; /* Suaviza los cambios de color al interactuar. */
+}
+
+.forgot-password:hover{
+    color:var(--primary); /* Cambia al color principal cuando el cursor pasa sobre el enlace. */
+}
+
+/* ========================================= */
+/* DASHBOARD */
+/* ========================================= */
+
+.dashboard{
+    display:flex; /* Organiza el menú lateral y el contenido principal mediante Flexbox. */
+    min-height:100vh; /* Hace que el Dashboard ocupe toda la altura visible. */
+    background:var(--background); /* Utiliza un fondo claro para mantener una apariencia limpia. */
+}
+
+/* Menú lateral */
+
+.sidebar{
+    width:280px; /* Define un ancho fijo para el menú lateral. */
+    background:linear-gradient(180deg,#2E3B2E,#5A6F48); /* Aplica un degradado inspirado en los tonos del bambú. */
+    color:white; /* Cambia el color del texto para mejorar el contraste. */
+    padding:35px; /* Agrega espacio interno alrededor del contenido del menú. */
+}
+
+/* Logo */
+
+.sidebar .logo{
+    text-align:center; /* Centra el contenido del logotipo. */
+    margin-bottom:40px; /* Separa el logotipo del menú de navegación. */
+}
+
+.sidebar img{
+    width:100px; /* Define el tamaño de la imagen del logotipo. */
+    margin-bottom:15px; /* Agrega separación entre la imagen y el título. */
+}
+
+.sidebar h2{
+    text-align:center; /* Centra el nombre del sistema. */
+    font-size:28px; /* Incrementa el tamaño del encabezado. */
+    color:white; /* Mantiene el texto visible sobre el fondo oscuro. */
+}
+
+/* Lista */
+
+.sidebar ul{
+    list-style:none; /* Elimina las viñetas de la lista de navegación. */
+}
+
+/* Espaciado */
+
+.sidebar li{
+    margin-bottom:15px; /* Separa cada opción del menú lateral. */
+}
+
+/* Links */
+
+.sidebar a{
+    display:block; /* Hace que todo el ancho del enlace sea interactivo. */
+    padding:15px; /* Agrega espacio interno para facilitar el clic. */
+    border-radius:14px; /* Redondea las esquinas del enlace. */
+    text-decoration:none; /* Elimina el subrayado predeterminado. */
+    color:white; /* Mantiene el texto visible sobre el fondo oscuro. */
+    transition:.30s; /* Suaviza las animaciones al interactuar con el menú. */
+}
+
+.sidebar a:hover{
+    background:rgba(255,255,255,.12); /* Agrega un fondo semitransparente al pasar el cursor. */
+    transform:translateX(5px); /* Desplaza ligeramente la opción seleccionada para mejorar la retroalimentación visual. */
+}
+
+/* ========================================= */
+/* CONTENIDO */
+/* ========================================= */
+
+.content{
+    flex:1; /* Permite que el contenido principal ocupe todo el espacio restante del Dashboard. */
+    padding:45px; /* Agrega espacio interno alrededor del contenido para mejorar la distribución visual. */
+    overflow:auto; /* Permite mostrar barras de desplazamiento cuando el contenido supera el tamaño disponible. */
+}
+
+/* Header */
+
+header{
+    display:flex; /* Organiza los elementos del encabezado horizontalmente. */
+    justify-content:space-between; /* Distribuye los elementos dejando espacio entre ellos. */
+    align-items:center; /* Centra verticalmente los elementos del encabezado. */
+    margin-bottom:35px; /* Separa el encabezado del contenido siguiente. */
+}
+
+header h1{
+    font-size:34px; /* Define un tamaño destacado para el título principal. */
+    color:var(--dark); /* Utiliza el color principal del proyecto. */
+}
+
+header p{
+    color:var(--muted); /* Utiliza un color secundario para la información complementaria. */
+    margin-top:5px; /* Agrega una pequeña separación respecto al título. */
+}
+
+/* Tarjetas */
+
+.cards{
+    display:flex; /* Organiza las tarjetas horizontalmente mediante Flexbox. */
+    gap:25px; /* Mantiene una separación uniforme entre las tarjetas. */
+    margin-bottom:40px; /* Separa las tarjetas del contenido siguiente. */
+}
+
+/* Card */
+
+.card{
+    flex:1; /* Hace que todas las tarjetas ocupen el mismo ancho disponible. */
+    background:var(--surface); /* Utiliza un fondo blanco para destacar cada tarjeta. */
+    padding:30px; /* Agrega espacio interno alrededor del contenido. */
+    border-radius:20px; /* Redondea las esquinas para una apariencia moderna. */
+    box-shadow:var(--shadow); /* Genera profundidad mediante una sombra suave. */
+    transition:.30s; /* Suaviza las animaciones al interactuar con la tarjeta. */
+}
+
+.card:hover{
+    transform:translateY(-6px); /* Desplaza ligeramente la tarjeta hacia arriba para simular elevación. */
+    box-shadow:0px 15px 35px rgba(0,0,0,.15); /* Incrementa la sombra durante la interacción. */
+}
+
+.card h3{
+    color:var(--dark); /* Utiliza el color principal para el título de la tarjeta. */
+    margin-bottom:12px; /* Agrega separación respecto al contenido inferior. */
+    font-size:20px; /* Define un tamaño apropiado para el encabezado. */
+}
+
+.card p{
+    color:var(--muted); /* Utiliza un color discreto para el contenido descriptivo. */
+    line-height:1.6; /* Incrementa el espacio entre líneas para mejorar la lectura. */
+}
+
+.card .number{
+    display:block; /* Coloca el número en una línea independiente. */
+    font-size:38px; /* Incrementa el tamaño para destacar la información principal. */
+    font-weight:bold; /* Resalta el valor mostrado. */
+    color:var(--primary); /* Utiliza el color principal para captar la atención. */
+    margin-top:15px; /* Agrega separación respecto al contenido superior. */
+}
+
+/* Tablas */
+
+.table-container{
+    background:var(--surface); /* Utiliza un fondo blanco para destacar la tabla. */
+    border-radius:20px; /* Redondea las esquinas del contenedor. */
+    box-shadow:var(--shadow); /* Agrega profundidad mediante una sombra. */
+    overflow:hidden; /* Evita que el contenido sobresalga de los bordes redondeados. */
+}
+
+table{
+    width:100%; /* Hace que la tabla ocupe todo el ancho disponible. */
+    border-collapse:collapse; /* Une los bordes de las celdas para obtener una apariencia uniforme. */
+}
+
+thead{
+    background:var(--secondary); /* Utiliza el color secundario para diferenciar el encabezado. */
+    color:white; /* Mantiene un contraste adecuado sobre el fondo oscuro. */
+}
+
+th{
+    text-align:left; /* Alinea el contenido hacia la izquierda. */
+    padding:18px; /* Agrega espacio interno a las celdas del encabezado. */
+    font-size:15px; /* Define un tamaño adecuado para los títulos de columnas. */
+}
+
+td{
+    padding:18px; /* Agrega espacio interno a cada celda. */
+    border-bottom:1px solid #EEEEEE; /* Dibuja una línea separadora entre registros. */
+    color:var(--text); /* Utiliza el color principal para la información mostrada. */
+}
+
+tbody tr{
+    transition:.30s; /* Suaviza las animaciones al interactuar con las filas. */
+}
+
+tbody tr:hover{
+    background:#FFF6ED; /* Resalta la fila sobre la que se posiciona el cursor. */
+}
+
+/* Botones secundarios */
+
+.button{
+    display:inline-block; /* Permite definir dimensiones manteniendo el flujo del texto. */
+    padding:12px 22px; /* Agrega espacio interno horizontal y vertical. */
+    background:var(--secondary); /* Utiliza el color secundario como fondo. */
+    color:white; /* Mantiene un contraste adecuado sobre el botón. */
+    border-radius:12px; /* Redondea las esquinas del botón. */
+    text-decoration:none; /* Elimina el subrayado del enlace. */
+    transition:.30s; /* Suaviza las animaciones durante la interacción. */
+}
+
+.button:hover{
+    background:var(--primary); /* Cambia al color principal cuando el cursor pasa sobre el botón. */
+}
+
+/* Pie */
+
+footer{
+    background:var(--dark); /* Utiliza el color principal oscuro para el pie de página. */
+    color:white; /* Mantiene el texto visible sobre el fondo oscuro. */
+    text-align:center; /* Centra el contenido horizontalmente. */
+    padding:22px; /* Agrega espacio interno alrededor del contenido. */
+    margin-top:40px; /* Separa el pie de página del contenido principal. */
+}
+
+/* ========================================= */
+/* RESPONSIVE */
+/* ========================================= */
+
+@media(max-width:900px){
+
+    /* Login */
+
+    .container{
+        flex-direction:column; /* Coloca la imagen y el formulario uno debajo del otro. */
+        gap:35px; /* Mantiene separación uniforme entre ambos elementos. */
+        padding:30px; /* Reduce el espacio interno para adaptarse a pantallas pequeñas. */
+    }
+
+    .login-image{
+        width:100%; /* Permite que la ilustración ocupe todo el ancho disponible. */
+    }
+
+    .login-image img{
+        max-width:420px; /* Limita el tamaño máximo de la imagen para evitar desbordamientos. */
+    }
+
+    .login-form{
+        width:100%; /* Hace que el formulario se adapte al ancho disponible. */
+        max-width:450px; /* Limita el ancho máximo para conservar una lectura cómoda. */
+    }
+
+    /* Dashboard */
+
+    .dashboard{
+        flex-direction:column; /* Coloca el menú encima del contenido principal. */
+    }
+
+    .sidebar{
+        width:100%; /* Hace que el menú lateral ocupe todo el ancho de la pantalla. */
+    }
+
+    .content{
+        padding:30px; /* Reduce el espacio interno para aprovechar mejor el área disponible. */
+    }
+
+    header{
+        flex-direction:column; /* Organiza el contenido del encabezado verticalmente. */
+        align-items:flex-start; /* Alinea el contenido al inicio del contenedor. */
+        gap:10px; /* Agrega separación entre los elementos del encabezado. */
+    }
+
+    .cards{
+        flex-direction:column; /* Coloca las tarjetas una debajo de otra. */
+    }
+
+    .card{
+        width:100%; /* Hace que cada tarjeta ocupe todo el ancho disponible. */
+    }
+
+    table{
+        font-size:14px; /* Reduce el tamaño del texto para mejorar la visualización en pantallas pequeñas. */
+    }
+
+    th{
+        padding:14px; /* Reduce el espacio interno del encabezado de la tabla. */
+    }
+
+    td{
+        padding:14px; /* Reduce el espacio interno de las celdas. */
+    }
+
+    footer{
+        margin-top:25px; /* Reduce la separación respecto al contenido principal. */
+    }
+
 }
